@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <style type="text/css">
+        .loading {
+            height: 200px;
+            width: 200px;
+            position: relative;
+        }
+
+        .loading::before,
+        .loading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 50%;
+            animation: load 2s;
+        }
+
+        .loading::after {
+            animation-delay: 1s;
+        }
+
+        @keyframes load {
+            0% {
+                width: 0px;
+                height: 0px;
+                opacity: 1;
+            }
+
+            100% {
+                width: 200px;
+                height: 200px;
+                opacity: 0;
+            }
+        }
+
+        .site-Welcome {
+            display: none;
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            right: 0;
+            margin: auto;
+            background: #888;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .site-welcome.active {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="siteWelcome" class="site-Welcome active">
+        <div class="loading"></div>
+    </div>
+    <div class="topnav" id="topnavbar">
+        <nav class="clearfix">
+            <span class="resume">简历</span>
+            <ul class="clearfix" style="float: right">
+                <li><a href="">关于</a></li>
+                <li>
+                    <a href="">技能</a>
+                </li>
+                <li>
+                    <a href="#siteworks">作品</a>
+                    <ul id="submenu" class="submenu">
+                        <li>作品1</li>
+                        <li>作品2</li>
+                        <li>作品3</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">博客</a>
+                    <ul id="submenu" class="submenu">
+                        <li>博客1</li>
+                        <li>博客2</li>
+                        <li>博客3</li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="banner" style="background-image: url(./img/wallhaven-32784.jpg);">
+        <div class="mask"></div>
+    </div>
+    <div class="card">
+        <div class="pictureandtext clearfix">
+            <img src="./img/图片1.png" alt="照片">
+            <div class="text">
+                <span class="helloworld">hello
+                    <span class="triangle"></span>
+                </span>
+                <h1>曾华城</h1>
+                <p>前端开发工程师</p>
+                <hr>
+                <dl>
+                    <dt>年龄</dt>
+                    <dd>23</dd>
+                    <dt>学历</dt>
+                    <dd>本科</dd>
+                    <dt>邮箱</dt>
+                    <dd>zh6358@163.com</dd>
+                    <dt>手机</dt>
+                    <dd>13968901797</dd>
+                </dl>
+            </div>
+        </div>
+        <footer class="media"></footer>
+    </div>
+    <p class="downloadPdfwrapper">
+        <a class="downloadPdf" target="_blank" href="./resume.pdf" download="">
+            下载PDF简历
+        </a>
+    </p>
+    <section class="skills">
+        <h2>技能</h2>
+        <ol>
+            <li>
+                <h3>HTML5&amp;CSS3</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>JavaScript</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>jQuery</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>Vue</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>React</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>Http</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+        </ol>
+    </section>
+    <section id="siteworks" class="protfolio">
+        <h2>作品集</h2>
+        <nav>
+            <ol>
+                <li class="all">所有</li>
+                <li class="framework">框架</li>
+                <li class="vallina">原生js</li>
+            </ol>
+        </nav>
+        <div class="works">
+            <div class="big"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+        </div>
+    </section>
+    <scipt src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.3.0/Tween.min.js"></scipt>
+    <script>
+        setTimeout(function () {
+            siteWelcome.classList.remove('active')
+        }, 1000);
+        window.onscroll = function () {
+            if (scrollY > 0) {
+                topnavbar.classList.add('sticky')
+            } else {
+                topnavbar.classList.remove('sticky')
+            }
+        }
+        let liTag = document.querySelectorAll('div.topnav>nav>ul>li')
+        for (i = 0; i < liTag.length; i++) {
+            liTag[i].onmouseenter = function (x) {
+                let li = x.currentTarget
+                let brother = li.getElementsByTagName('ul')[0]
+                brother.classList.add('active')
+            }
+            liTag[i].onmouseleave = function (x) {
+                let li = x.currentTarget
+                let brother = li.getElementsByTagName('ul')[0]
+                brother.classList.remove('active')
+            }
+        }
+        let aTag = document.querySelectorAll('div.topnav>nav>ul>li>a')
+        for (i = 0; i < aTag.length; i++) {
+            aTag[i].onclick = function (xx) {
+                xx.preventDefault()
+                let a = xx.currentTarget//监听的目标，需要返回<a>的href，用onlick可能导致点的是<span>zz</span>,但监听的是<a><span>zz</span></a>,span是监听目标身体的一部分
+                let href = a.getAttribute('href')//返回属性值
+                let element = document.querySelector(href)//获取要滑倒的目标
+                let top = element.offsetTop//目标标签的顶部坐标
+                let targetTop = top - 80
+                let n = 25
+                let currentTop = window.scrollY//当前的视口顶部距离页面顶部的距离
+
+                let distance = (targetTop - currentTop) / n
+                let i = 1
+                let id = setInterval(() => {
+                    if (i === 25) {
+                        window.clearInterval(id)
+                        return
+                    }
+                    i = i + 1
+                    window.scrollTo(0, currentTop + distance * i)
+                }, 40)
+            }
+        }
+    </script>
+    <script>
+        all.onclick = function () {
+            protfolioBar.className = 'bar state-1'
+        }
+        framework.onclick = function () {
+            protfolioBar.className = 'bar state-2'
+        }
+        vallina.onclick = function () {
+            protfolioBar.className = 'bar state-3'
+        }
+        /*
+        .protfolio nav.barinner{
+        height: 100 %;
+        background - color: #e6686a;
+        border - radius: 2px;
+        transition: all 0.3;
+        }
+        .protfolio nav.bar.state - 1.barinner{
+        width: 50px;
+        margin - left: 0;
+        }
+.protfolio nav.bar.state - 2.barinner{
+            width: 50px;
+            margin - left: 65px;
+        }
+.protfolio nav.bar.state - 3.barinner{
+            widows: 121px;
+            margin - left: 140px;
+        }导航条点击all滑动条在左边*/
+    </script>
+</body>
+
+</html>
