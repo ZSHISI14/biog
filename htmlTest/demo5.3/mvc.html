@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="cat-list">
+    </ul>
+    <section id='cat'>
+        <h2 id='cat-name'></h2>
+        <div class="cat-count"></div>
+        <img src="" alt="cat" id="cat-img">
+    </section>
+    <script>
+        !function () {
+            var model = {
+                currentCat: null,
+                cats: [ //猫的图片数据
+                    {
+                        clickCount: 0,
+                        name: 'Tabby',
+                        imgSrc: 'https://proglib.io/wp-content/uploads/2018/11/1_hLSiwh3HW9Pqw0M3gLEMOg.png',
+                    },
+                    {
+                        clickCount: 0,
+                        name: 'two',
+                        imgSrc: 'https://i1.wp.com/wp.laravel-news.com/wp-content/uploads/2018/12/forg.js.png?resize=2200%2C1125',
+                    },
+                    {
+                        clickCount: 0,
+                        name: 'cat1',
+                        imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyxQK_7b9OqjI0gO6cjuFaSz7OeMipSL68yiMy9P0kQtrGBpr5',
+                    },
+
+                ]
+            }
+            var catView = {
+                currentCat: null,
+                init: function () {
+                    this.catView = document.querySelector('#cat')
+                    this.catName = document.querySelector('#Cat-name')
+                    this.catCount = document.querySelector('.cat-count')
+                    this.catImg = document.querySelector('#cat-img')
+                    this.currentCat = contrl.getCurrentCat()
+                    this.render()
+                    this.bind()
+                },
+                render: function () {
+                    this.catName = this.currentCat.name
+                    this.catCount.innerText = this.currentCat.clickCount
+                    this.catImg.src = this.currentCat.imgSrc
+                },
+                bind:function(){
+                    this.catImg.addEventListener('click',()=>{
+                        contrl.setCurrentCount()
+                        this.catCount.innerText = this.currentCat.clickCount
+                    })
+                }
+            }
+
+            var contrl = {
+                init: function () {
+                    model.currentCat = model.cats[0]
+                    catView.init()
+                    Listview.init()
+                },
+                getCurrentCat: function () {
+                    return model.currentCat
+                },
+                getCat: function () {
+                    return model.cats
+                },
+                setCat: function (index) {
+                    return model.currentCat = index
+                },
+                setCurrentCount: function () {
+                    model.currentCat.clickCount++;
+                },
+                
+            }
+            var Listview = {
+                init: function () {
+                    this.Listview = document.querySelector('#cat-list')
+                    this.cats = contrl.getCat()
+                    this.render()
+                },
+                render: function () {
+                    let ul = document.createDocumentFragment('ul')
+                    this.cats.forEach((item, index) => {
+                        let li = document.createElement('li')
+                        li.innerHTML = item.name
+                        li.setAttribute('class', item)
+                        li.addEventListener('click', function () {
+                            contrl.setCat(item)
+                            catView.render()
+                        })
+                        ul.append(li)
+                    })
+                    this.Listview.append(ul)
+                    ul = null
+                }
+            }
+            
+            contrl.init()
+        }()    
+    </script>
+</body>
+
+</html>

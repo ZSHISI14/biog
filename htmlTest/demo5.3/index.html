@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .slide{
+            overflow: hidden;
+            width: 400px;
+            height: 400px;
+        }
+        .container {
+            display: flex;
+        }
+        .img {
+            display: block;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            display: flex;
+            list-style: none;
+        }
+        .counterSection div{
+            display: none;
+        }
+        .counterSection div.current{
+            display: block;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+            <ul>
+                <li>one</li>
+                <li>two</li>
+                <li>two</li>
+                <li>two</li>
+            </ul>
+        </div>
+        <div class="counterSection">
+            <div class="current">
+                <p>one</p>
+                <p class="counter">0</p>
+            </div>
+            <div>
+                <p>two</p>
+                <p class="counter">0</p>
+            </div>
+            <div>
+                <p>three</p>
+                <p class="counter">0</p>
+            </div>
+            <div>
+                <p>four</p>
+                <p class="counter">0</p>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="container">
+                <img src="https://proglib.io/wp-content/uploads/2018/11/1_hLSiwh3HW9Pqw0M3gLEMOg.png" alt="" width="400"
+                    height="400">
+                <img src="https://cdn.shopify.com/s/files/1/1321/6369/products/duck-js_e409da90-1e21-42a5-85a0-beae47b793de_1024x1024.png?v=1518578459"
+                    alt="" width="400" height="400">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyxQK_7b9OqjI0gO6cjuFaSz7OeMipSL68yiMy9P0kQtrGBpr5"
+                    alt="" width="400" height="400">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQXCUvfZhcbfJlUe8oocYYEhePsMKvJ5o5b2x-fP7tNv-ZTyEs"
+                    alt="" width="400" height="400">
+            </div>
+        </div>
+    </div>
+    <script>
+       /* 
+        var img = document.querySelectorAll('.container img')
+        var button = document.querySelectorAll('.header li')
+        var num = document.querySelectorAll('.counter')
+        var section =document.querySelector('.counterSection')
+        for (let i = 0; i < button.length; i++) {
+            button[i].addEventListener('click', function () {
+                let distance = i * -400
+                document.querySelector('.container').style.transform = `translateX(${distance}px)`
+                section.querySelector('.current').classList.remove('current')
+                section.querySelectorAll('div')[i].classList.add('current')
+            })
+            img[i].addEventListener('click', counter(num[i]))
+        }
+
+        function counter(x) {
+            var num = 0,
+            node = x;
+            return function(e){
+                node.innerText = ++num
+            }
+        }
+        */
+       
+    </script>
+</body>
+
+</html>

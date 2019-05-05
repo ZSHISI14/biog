@@ -1,0 +1,47 @@
+*{margin: 0;padding: 0;box-sizing: border-box;}
+body{background: #ebedf4;position: relative;}
+.clearfix::after{content:'';display: block;clear: both;}
+.left{float: left}
+.right{float: right}
+.container{max-width:800px;margin:0 auto;}
+ul,ol{list-style: none;}
+
+.topNav{height:60px;background: #4d6da9}
+.topNav .searchsection .logo{width: 30px;height: 30px;background: white;border-radius: 4px;margin:15px 0;}
+.topNav .searchsection .searchBar{width: 500px;height: 30px;border-radius: 4px;margin:15px 0 15px 4px;border: none;}
+
+.topNav .right .bigBlock{background: #7ea1cc;width: 15px;height: 16px;margin: 22px 0 22px 0; }
+.topNav .right .bar{background: #7ea1cc;width: 40px;height: 10px;margin: 25px 0 25px 10px; }
+.topNav .right .smallBlock{background: #7ea1cc;width: 8px;height: 8px;margin: 26px 0 26px 10px; }
+
+
+.header .container{background:#ff756e;height:280px;}
+.header .left{height:280px;width: 50%;position: relative;}
+.header .shortbar{position: absolute;width:100px;background: white;height: 8px;top:84%;right:25%;border-radius: 1px;}
+.header .longbar{position: absolute;width:200px;background: white;height: 8px;top:90%;right:0;border-radius: 1px;}
+
+.header .right{height:280px;width: 50%;position: relative;}
+.header .right .shortblock{position: absolute;width:80px;background: white;height: 20px;top:88%;left:22%;border-radius: 1px;}
+.header .right .longblock{position: absolute;width:200px;background: white;height: 20px;top:88%;right:5%;border-radius: 1px;}
+
+
+.header .downbar{height: 40px;background: white;}
+.header .downbar .profile{height: 160px;width:160px;background: gray;margin-top:-140px;margin-left: 15px;}
+.header .downbar>ul>li{float:left;height: 10px;width:60px;background: gray;margin: 10px 15px 20px 15px;}
+.header .downbar>ul>li:nth-child(even){width:40px;}
+
+.mainMessage .left{height:600px;width: 50%;padding: 8px 20px 0 0;}
+.mainMessage .left .intro{width: 100%;height: 110px;background: white;}
+.mainMessage .left .videoSection{width: 100%;height: 474px;background: white;margin-top: 8px;}
+
+.mainMessage .right{width: 50%;padding: 8px 0 0 0;height:600px;}
+.mainMessage .right .writeSection{width: 100%;padding: 8px 0 0 0;height:210px;background:rgb(228, 224, 224)}
+.mainMessage .right .writeinput{width: 100%;margin: 8px 0 0 0;height:374px;background:rgb(228, 224, 224);position: relative;}
+.mainMessage .right .writeinput ::before{content:'';border:10px solid rgb(214, 153, 39);width:0px;border-top-width:40px;border-bottom-color:transparent;position:absolute;right:5%;}
+
+
+
+.rightNav{position: fixed;right:20%;top:30%;}
+.rightNav .item{margin-bottom: 2px;}
+.rightNav .bar{height:20px;width: 4px;background: rgb(160, 156, 156);margin-right: 5px; }
+.rightNav .content{height:5px;width: 34px;background: rgb(160, 156, 156) ;margin-top: 7px;}

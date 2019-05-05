@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .row>label {
+            display: inline-block;
+            width: 4em;
+        }
+
+        .row {
+            margin: 10px 0;
+        }
+
+        .wrapper {
+            border: 1px solid grey;
+            padding: 15px;
+            min-width: 350px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>注册</h1>
+        <form id='signUpForm'>
+            <div class='row'>
+                <label>邮箱</label>
+                <input type="text" name='email'>
+                <span class='error'></span>
+            </div>
+            <div class='row'>
+                <label>密码</label>
+                <input type="password" name='password'>
+                <span class='error'></span>
+            </div>
+            <div class='row'>
+                <label>确认密码</label>
+                <input type="password" name='password_confirmation'>
+                <span class='error'></span>
+            </div>
+            <div class="row">
+                <input type="submit" value="注册">
+            </div>
+        </form>
+        <script src='https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js'></script>
+        <script>
+            var hash = {}
+            let $form = $('#signUpForm')
+            $form.on('submit', (e) => {
+                e.preventDefault()//阻止form默认刷新
+                let need = ['email', 'password', 'password_confirmation']
+                need.forEach((x) => {
+                    let value = $('#signUpForm').find(`[name=${x}]`).val()//方括号选择器选择html标签内的内容
+                    hash[x] = value
+                })
+                $form.find('span.error').each((index,span)=>{$('span').text('')})//清除所有的错误显示
+                if (hash['email'] === '') {
+                    $form.find('[name="email"]').siblings('span.error').text('邮箱错误')
+                    return//填写错误所以要退出函数从新获取value
+                }
+                if (hash['password'] === '') {
+                    $form.find('[name="password"]').siblings('span.error').text('密码为空')
+                    return//填写错误所以要退出函数从新获取
+                }
+                if (hash['password_confirmation'] !== hash['password']) {
+                    $form.find('[name="password_confirmation"]').siblings('span.error').text('密码不匹配')
+                    return//填写错误所以要退出函数从新获取
+                }
+                $.post('url',hash)
+            })
+            window.Jquery.ajax = function(options){
+                if(arguments.length === 1){
+                    
+                }
+            }
+        </script>
+        <script>//localStrorage练习，只弹出一次页面改版
+            var a = localStorage.getItem('a')
+            if(!a){
+                alert('页面改版了')
+                localStorage.setItem('a','true')
+            }
+        </script>
+    </div>
+</body>
+
+</html>

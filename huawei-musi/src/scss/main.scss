@@ -1,0 +1,196 @@
+$background:#060a3d;
+$color: #fff;
+$color1:#868aaf;
+$color2:#db3baa;
+$color2-dark: darken($color2,10%);
+$color2-darker: darken($color2,30%);
+$color3:#0025f1;
+
+*{margin: 0;padding: 0;box-sizing: border-box;}
+
+
+#player{
+    background: $background;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    .header{
+        text-align: center;
+        height: 88px;
+        h1{color: $color;font-size: 20px;padding-top: 20px;}
+        p{color:$color1;font-size: 12px;}
+        .balls{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 16px;
+            >span{
+                display: block;
+                height:5px;
+                width:5px;
+                border-radius: 50%;
+                background:$color2-darker;
+                margin: 0 4px;
+                
+                &.current{//不带and就成子元素了
+                    width: 8px;
+                    height: 8px;
+                    background: $color2-dark;
+                }
+            }
+        }
+    }
+    .area-effect{
+        height: calc(100vh - 206px) ;
+        width: 200vw;
+        display: flex;
+        transition: transform 0.3s;
+        &.panelLeft{
+            transform: translateX(0);
+        }
+        &.panelRight{
+            transform: translateX(-50%);
+        }
+        .panel-effect{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100vw;
+            div{
+                background-size: contain;
+                position: absolute;
+            }
+            .effect-1{
+                background: url(../svg/effect-no-move.svg) 0 0 no-repeat;
+                width: 70vw;
+                height: 70vw;
+            }
+            .effect-2{
+                background: url(../svg/effect-move1.svg) 0 0 no-repeat;
+                width: 60vw;
+                height: 60vw;
+                animation: rotate 10s linear  infinite reverse;
+            }
+            .effect-3{
+                background: url(../svg/effect-move2.svg) 0 0 no-repeat;
+                width: 20vw;
+                height: 20vw;
+                animation: rotate 8s linear  infinite ;
+            }
+            .lyric{
+                text-align: center;
+                bottom: 10%;
+                p{
+                    font-size: 13px;
+                    color:$color1;
+                    margin-top: 10px;
+                    
+                    &.current{
+                        color: $color;
+                    }
+                }
+            }
+            @keyframes rotate{
+                0%{
+                    transform: rotate(0)
+                }
+                100%{
+                    transform: rotate(360deg)
+                }
+            }
+        }
+        .panel-lyricd{
+            width: 100vw;
+            text-align: center;
+            line-height: 2;
+            margin: 30px 0;
+            overflow: hidden;
+            .lyrics-container{
+                transition:all 3s;
+            }
+            p{
+                color: $color1;
+                font-size: 14px;
+            }
+            p.current{
+                color: $color;
+            }
+        }
+    }
+    .button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg{
+            width:24px;
+            height:24px;
+            margin: 0 20px;
+            &.btn-more{
+                transform: rotate(90deg);
+                margin-left:8px;
+            }
+        }
+        
+    }
+    .area-bar{
+        display: flex;
+        padding: 0 20px;
+        color: $color1;
+        align-items: center;
+        .time-start{
+            order: 1;
+            width:40px;
+        }
+        .timebar{
+            order: 2;
+            flex:1;
+            height:4px;
+            border-radius: 2px;
+            margin: 0 10px;
+            background: $color3;
+            .progress{
+                position: relative;
+                background: $color2;
+                height: 100%;
+                width:0%;
+                border-radius: 2px;
+                transition: all .2s;
+
+                &::after {
+                    content:'';
+                    position: absolute;
+                    display: block;
+                    right: -8px;//一定要写这样相对定位后滚动条增长才会相对移动
+                    background: url(../svg/progress.svg) 0 0 no-repeat;
+                    height: 16px;
+                    width: 16px;
+                    top:-6px;
+                    background-size: contain;
+                }
+            }
+            
+        }
+        
+        .time-end{
+            order: 3;
+            width:40px;
+        }
+    }
+    .action{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 10px 10px 10px;
+        svg{
+            width:28px;
+            height:28px;
+
+        &.btn-play-pause{
+            width: 50px;
+            height: 50px;
+        }
+        }
+    }
+}
